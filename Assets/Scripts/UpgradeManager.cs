@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -96,7 +95,7 @@ public class UpgradeManager : MonoBehaviour
             {
                 level = i,
                 cost = (int)Mathf.Pow(2, i) * 10,
-                value = 4f - i * 0.2f
+                value = 2f - i * 0.1f
             };
         }
 
@@ -113,6 +112,13 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+    public void AddMoney(int amount)
+    {
+        money += amount;
+
+        PlayerPrefs.SetInt("Money", money);
+    }
+
     public void SubtractMoney(int amount)
     {
         money -= amount;
@@ -127,14 +133,19 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeFuel()
     {
-        if (GetCurrentFuelUpgrade().level >= maxFuelLevel || money < GetCurrentFuelUpgrade().cost)
+        int level = GetCurrentFuelUpgrade().level;
+
+        if (level >= maxFuelLevel || money < GetCurrentFuelUpgrade().cost)
         {
             return;
         }
 
         SubtractMoney(GetCurrentFuelUpgrade().cost);
 
-        PlayerPrefs.SetInt("FuelLevel", GetCurrentFuelUpgrade().level + 1);
+        PlayerPrefs.SetInt("FuelLevel", level + 1);
+
+        UIManager.Instance.ShowMoney();
+        UIManager.Instance.UpdateUpgradeUI();
     }
 
     public ConsumptionUpgrade GetCurrentConsumptionUpgrade()
@@ -144,14 +155,19 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeConsumption()
     {
-        if (GetCurrentConsumptionUpgrade().level >= maxConsumptionLevel || money < GetCurrentConsumptionUpgrade().cost)
+        int level = GetCurrentConsumptionUpgrade().level;
+
+        if (level >= maxConsumptionLevel || money < GetCurrentConsumptionUpgrade().cost)
         {
             return;
         }
 
         SubtractMoney(GetCurrentConsumptionUpgrade().cost);
 
-        PlayerPrefs.SetInt("ConsumptionLevel", GetCurrentConsumptionUpgrade().level + 1);
+        PlayerPrefs.SetInt("ConsumptionLevel", level + 1);
+
+        UIManager.Instance.ShowMoney();
+        UIManager.Instance.UpdateUpgradeUI();
     }
 
     public SettleUpgrade GetCurrentSettleUpgrade()
@@ -161,7 +177,9 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeSettle()
     {
-        if (GetCurrentSettleUpgrade().level >= maxSettleLevel ||
+        int level = GetCurrentSettleUpgrade().level;
+        
+        if (level >= maxSettleLevel ||
             money < GetCurrentSettleUpgrade().cost)
         {
             return;
@@ -169,6 +187,9 @@ public class UpgradeManager : MonoBehaviour
 
         SubtractMoney(GetCurrentSettleUpgrade().cost);
 
-        PlayerPrefs.SetInt("SettleLevel", GetCurrentSettleUpgrade().level + 1);
+        PlayerPrefs.SetInt("SettleLevel", level + 1);
+
+        UIManager.Instance.ShowMoney();
+        UIManager.Instance.UpdateUpgradeUI();
     }
 }

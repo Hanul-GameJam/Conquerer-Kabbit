@@ -15,7 +15,7 @@ public class PlanetController : MonoBehaviour
     [SerializeField] bool choiceShown;
     public int varieties, variety;
 
-    public float baseSettleChance, additionalSettleChance;
+    public float chance, baseSettleChance, additionalSettleChance;
     public float exploreFuelBonus, exploreSettleBonus;
     public int exploreScoreBonus, exploreWaveRateIncrease;
     public float settleSuccessBonusMultiplier, settleFailBonusMultiplier;
@@ -84,17 +84,20 @@ public class PlanetController : MonoBehaviour
 
             if (transform.position.x <= animationTargetX)
             {
+                animator.enabled = true;
                 PlayAnimation(true);
             }
 
-            if (transform.position.x <= moveTargetX + 0.01 &&
-                transform.position.x >= moveTargetX - 0.01)
+            if (transform.position.x <= moveTargetX + 0.05 &&
+                transform.position.x >= moveTargetX - 0.05)
             {
                 if (!choiceShown)
                 {
                     canMove = false;
 
-                    UIManager.Instance.ShowChoiceUI();
+                    chance = baseSettleChance + additionalSettleChance;
+
+                    UIManager.Instance.ShowChoiceUI(chance);
                 }
             }
         }
@@ -113,7 +116,7 @@ public class PlanetController : MonoBehaviour
     {
         player.ToggleControl(false);
 
-        animator.enabled = true;
+        animator.enabled = false;
 
         canMove = true;
     }
@@ -149,21 +152,20 @@ public class PlanetController : MonoBehaviour
         float roll = UnityEngine.Random.Range(0, 100);
         int totalGainedMoney = 0;
         int totalMoney = PlayerPrefs.GetInt("Money");
-        baseSettleChance = UpgradeManager.Instance.GetCurrentSettleUpgrade().value;
 
         Delay(1f, () =>
         {
-            if (roll < (baseSettleChance + additionalSettleChance))
+            if (roll < chance)
             {
                 Debug.Log("Settle Success!");
 
                 Delay(2f, () =>
                 {
                     totalGainedMoney = (int)Mathf.Round(
-                    score * settleSuccessBonusMultiplier
-                );
+                        score * settleSuccessBonusMultiplier
+                    );
 
-                    UIManager.Instance.ShowSettleResult(true, totalGainedMoney, score);
+                    UIManager.Instance.ShowSettleResult(true, totalGainedMoney);
                 });
             }
             else
@@ -178,7 +180,7 @@ public class PlanetController : MonoBehaviour
                     score * settleFailBonusMultiplier
                 );
 
-                    UIManager.Instance.ShowSettleResult(false, totalGainedMoney, score);
+                    UIManager.Instance.ShowSettleResult(false, totalGainedMoney);
                 });
             }
 

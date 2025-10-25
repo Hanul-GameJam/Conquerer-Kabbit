@@ -486,7 +486,7 @@ Transform:
   m_GameObject: {fileID: 201874220}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12, y: 0, z: -5}
+  m_LocalPosition: {x: -12, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1209,10 +1209,10 @@ RectTransform:
   - {fileID: 1874151962}
   m_Father: {fileID: 1775045130}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0011597, y: -0.0029297}
-  m_SizeDelta: {x: 104.86, y: 104.84}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.001159668, y: -0.0029296875}
+  m_SizeDelta: {x: -799.14, y: -403.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &529535496
 MonoBehaviour:
@@ -1544,10 +1544,10 @@ RectTransform:
   - {fileID: 1483367336}
   m_Father: {fileID: 1775045130}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0011597, y: -0.0029297}
-  m_SizeDelta: {x: 104.86, y: 104.84}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.001159668, y: -0.0029296875}
+  m_SizeDelta: {x: -799.14, y: -403.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &877377252
 GameObject:
@@ -1622,10 +1622,10 @@ RectTransform:
   - {fileID: 1988455303}
   m_Father: {fileID: 1775045130}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0011597, y: -0.0065134}
-  m_SizeDelta: {x: 104.86, y: 104.84}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.001159668, y: -0.006515503}
+  m_SizeDelta: {x: -799.14, y: -403.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &961689524
 GameObject:
@@ -3178,7 +3178,7 @@ Transform:
   m_GameObject: {fileID: 1679607508}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.518, y: -0.384, z: -1}
+  m_LocalPosition: {x: -0.518, y: -0.384, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3561,7 +3561,7 @@ MonoBehaviour:
   - {fileID: 7774590118588684456, guid: e8b5826c8a7196c43bded260a84e1419, type: 3}
   totalWaveCount: 0
   waveRate: 2
-  waveInterval: 11
+  waveInterval: 9.5
   canSpawnNextWave: 1
   waveIndex: 0
   planetPrefab: {fileID: 8709861918122522536, guid: 4a5975bb940166a4aa372c8d1c91894d, type: 3}

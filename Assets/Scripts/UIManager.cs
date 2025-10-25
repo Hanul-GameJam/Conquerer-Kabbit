@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
     private float lastPressTime = 0f;
     public float interval = 0.5f;
 
+    private bool isLoading = false;
+
     public Sprite normalSprite, hitSprite;
     public Image fuelUI;
     public Image[] fuelGauges;
@@ -90,6 +92,7 @@ public class UIManager : MonoBehaviour
 
                 if (pressCount >= 3)
                 {
+                    Debug.Log("Resetting All Data");
                     ResetAllData();
 
                     pressCount = 0;
@@ -169,6 +172,9 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (isLoading) return;
+        isLoading = true;
+
         StartCoroutine(PlaySoundThenLoadAsync("PlayScene", 1.5f));
     }
 
@@ -184,8 +190,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateUpgradeUI()
     {
-        if (upgradeMenu.activeSelf == false) return;
-
         int fuelLevel = PlayerPrefs.GetInt("FuelUpgradeLevel");
         int consumptionLevel = PlayerPrefs.GetInt("ConsumptionUpgradeLevel");
         int settleLevel = PlayerPrefs.GetInt("SettleUpgradeLevel");
@@ -232,7 +236,13 @@ public class UIManager : MonoBehaviour
 
     private void ResetAllData()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("Money", 0);
+        PlayerPrefs.SetInt("FuelLevel", 0);
+        PlayerPrefs.SetInt("ConsumptionLevel", 0);
+        PlayerPrefs.SetInt("SettleLevel", 0);
+
+        ShowMoney();
+        UpdateUpgradeUI();
     }
 
     // Play Scene UI Methods
@@ -251,16 +261,14 @@ public class UIManager : MonoBehaviour
         scoreText.text = newScore.ToString();
     }
 
-    public void ShowChoiceUI()
+    public void ShowChoiceUI(float chance)
     {
-        StartCoroutine(DelayedChoiceUI());
+        StartCoroutine(DelayedChoiceUI(chance));
     }
 
-    public void ShowSettleChance()
+    public void ShowSettleChance(float chance)
     {
-        int settleLevel = PlayerPrefs.GetInt("SettleUpgradeLevel");
-
-        settleChanceText.text = "성공 확률\n" + UpgradeManager.Instance.settleUpgrades[settleLevel].value.ToString() + "%";
+        settleChanceText.text = "성공 확률\n" + chance.ToString() + "%";
     }
 
     public void ChooseSettlement()
@@ -273,9 +281,9 @@ public class UIManager : MonoBehaviour
         StartCoroutine(ChoseExplore());
     }
 
-    public void ShowSettleResult(bool success, int gainedMoney, int score)
+    public void ShowSettleResult(bool success, int gainedMoney)
     {
-        StartCoroutine(DelayedShowResult(success, gainedMoney, score));
+        StartCoroutine(DelayedShowResult(success, gainedMoney));
     }
 
     public void PauseGame()
@@ -346,9 +354,10 @@ public class UIManager : MonoBehaviour
         PlanetController.Instance.LeavePlanet();
     }
 
-    private IEnumerator DelayedChoiceUI()
+    private IEnumerator DelayedChoiceUI(float chance)
     {
         choiceMenu.SetActive(true);
+        ShowSettleChance(chance);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -359,7 +368,7 @@ public class UIManager : MonoBehaviour
         exploreButton.SetActive(true);
     }
 
-    private IEnumerator DelayedShowResult(bool success, int gainedMoney, int score)
+    private IEnumerator DelayedShowResult(bool success, int gainedMoney)
     {
         settleResultMenu.SetActive(true);
 
@@ -376,12 +385,13 @@ public class UIManager : MonoBehaviour
 
         gainedMoneyText.gameObject.SetActive(true);
         gainedMoneyText.text = "얻은 자원: " + gainedMoney.ToString();
+        UpgradeManager.Instance.AddMoney(gainedMoney);
 
         yield return new WaitForSeconds(1f);
 
-        if (score > PlayerPrefs.GetInt("BestScore"))
+        if (gainedMoney > PlayerPrefs.GetInt("BestScore"))
         {
-            PlayerPrefs.SetInt("BestScore", score);
+            PlayerPrefs.SetInt("BestScore", gainedMoney);
             bestScoreText.gameObject.SetActive(true);
         }
 

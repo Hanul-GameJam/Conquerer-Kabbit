@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4023062835896826839}
+  - component: {fileID: 7505387740704753977}
   m_Layer: 0
   m_Name: Wave09
   m_TagString: Untagged
@@ -34,6 +35,19 @@ Transform:
   - {fileID: 1701445426397539849}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7505387740704753977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6467120861320702783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6e0603278b0ff49acb006e5ae264f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 15
 --- !u!1001 &1834373446653603974
 PrefabInstance:
   m_ObjectHideFlags: 0

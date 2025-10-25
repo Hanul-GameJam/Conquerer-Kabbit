@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        if (SceneManager.GetActiveScene().name == "PlayScene" && UIManager.Instance.pauseMenu.activeSelf == false && atSettle == false)
+        if (SceneManager.GetActiveScene().name == "PlayScene" && UIManager.Instance.pauseMenu.activeSelf == false && atSettle == false && transform.position.z == -1)
         {
             GameManager.Instance.GameOver();
         }
@@ -244,14 +244,14 @@ public class PlayerController : MonoBehaviour
         while (progress < 1f)
         {
             progress += Time.deltaTime * scaleSpeed;
-            /*transform.localScale = Vector3.Lerp(startScale, targetScale, progress);*/
+            //transform.localScale = Vector3.Lerp(startScale, targetScale, progress);
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                new Vector3(0, 0, 30),
+                new Vector3(0, 0, 2),
                 moveSpeed * Time.deltaTime
             );
             yield return null;
-            if (transform.position.z >= 0) break;
+            if (transform.position.z >= 2) break;
         }
 
         /*rend.enabled = false;*/

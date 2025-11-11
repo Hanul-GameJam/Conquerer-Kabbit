@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    private static readonly WaitForSeconds _waitForSeconds0_5 = new(0.5f);
+    private static readonly WaitForSeconds _waitForSeconds1 = new(1f);
+    private static readonly WaitForSeconds _waitForSeconds3 = new(3f);
+
     public static UIManager Instance;
 
     public Text moneyText, scoreText;
@@ -71,9 +75,8 @@ public class UIManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "TitleScene")
         {
-            ShowMoney();
-            ShowBestScore();
             UpdateUpgradeUI();
+            ShowBestScore();
 
             if (Input.GetKeyDown(KeyCode.F5))
             {
@@ -153,11 +156,6 @@ public class UIManager : MonoBehaviour
     }
 
     // Title Scene UI Methods
-    public void ShowMoney()
-    {
-        moneyText.text = PlayerPrefs.GetInt("Money").ToString();
-    }
-
     public void ShowBestScore()
     {
         scoreText.text = "최고 점수: " + PlayerPrefs.GetInt("BestScore").ToString();
@@ -173,6 +171,7 @@ public class UIManager : MonoBehaviour
     public void StartGame()
     {
         if (isLoading) return;
+        
         isLoading = true;
 
         StartCoroutine(PlaySoundThenLoadAsync("PlayScene", 1.5f));
@@ -190,9 +189,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdateUpgradeUI()
     {
-        int fuelLevel = PlayerPrefs.GetInt("FuelUpgradeLevel");
-        int consumptionLevel = PlayerPrefs.GetInt("ConsumptionUpgradeLevel");
-        int settleLevel = PlayerPrefs.GetInt("SettleUpgradeLevel");
+        int money = PlayerPrefs.GetInt("Money");
+        int fuelLevel = PlayerPrefs.GetInt("FuelLevel");
+        int consumptionLevel = PlayerPrefs.GetInt("ConsumptionLevel");
+        int settleLevel = PlayerPrefs.GetInt("SettleLevel");
+
+        moneyText.text = money.ToString();
 
         currentFuelValueText.text = "현재: " + UpgradeManager.Instance.fuelUpgrades[fuelLevel].value.ToString() + "p";
         fuelUpgradeCostText.text = UpgradeManager.Instance.fuelUpgrades[fuelLevel].cost.ToString();
@@ -207,16 +209,22 @@ public class UIManager : MonoBehaviour
     public void UpgradeFuelLevel()
     {
         UpgradeManager.Instance.UpgradeFuel();
+
+        UpdateUpgradeUI();
     }
 
     public void UpgradeConsumptionLevel()
     {
         UpgradeManager.Instance.UpgradeConsumption();
+
+        UpdateUpgradeUI();
     }
 
     public void UpgradeSettleLevel()
     {
         UpgradeManager.Instance.UpgradeSettle();
+
+        UpdateUpgradeUI();
     }
 
     public void ShowOptionMenu()
@@ -241,7 +249,6 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("ConsumptionLevel", 0);
         PlayerPrefs.SetInt("SettleLevel", 0);
 
-        ShowMoney();
         UpdateUpgradeUI();
     }
 
@@ -309,6 +316,9 @@ public class UIManager : MonoBehaviour
 
     public void QuitToTitle()
     {
+        if (isLoading) return;
+
+        isLoading = true;
         Time.timeScale = 1f;
 
         StartCoroutine(PlaySoundThenLoadAsync("TitleScene", 1.5f));
@@ -359,11 +369,11 @@ public class UIManager : MonoBehaviour
         choiceMenu.SetActive(true);
         ShowSettleChance(chance);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return _waitForSeconds0_5;
 
         settleButton.SetActive(true);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return _waitForSeconds0_5;
 
         exploreButton.SetActive(true);
     }
@@ -395,7 +405,7 @@ public class UIManager : MonoBehaviour
             bestScoreText.gameObject.SetActive(true);
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return _waitForSeconds3;
 
         exitButton.SetActive(true);
     }
@@ -409,7 +419,7 @@ public class UIManager : MonoBehaviour
         ShowLostResource();
         scoreText.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(1f);
+        yield return _waitForSeconds1;
 
         exitButton.SetActive(true);
     }
@@ -423,6 +433,7 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
 
+        isLoading = false;
         asyncLoad.allowSceneActivation = true;
     }
 }

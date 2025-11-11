@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: planetSpawnpoint
       value: 
       objectReference: {fileID: 961689525}
+    - target: {fileID: 8690147637006481563, guid: 4a5975bb940166a4aa372c8d1c91894d, type: 3}
+      propertyPath: exploreSettleBonus
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8709861918122522536, guid: 4a5975bb940166a4aa372c8d1c91894d, type: 3}
       propertyPath: m_Name
       value: Planet
@@ -3561,7 +3565,7 @@ MonoBehaviour:
   - {fileID: 7774590118588684456, guid: e8b5826c8a7196c43bded260a84e1419, type: 3}
   totalWaveCount: 0
   waveRate: 2
-  waveInterval: 9.5
+  waveInterval: 1
   canSpawnNextWave: 1
   waveIndex: 0
   planetPrefab: {fileID: 8709861918122522536, guid: 4a5975bb940166a4aa372c8d1c91894d, type: 3}

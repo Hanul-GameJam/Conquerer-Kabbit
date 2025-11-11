@@ -9,6 +9,8 @@ public class DestroyAfterEnd : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.canSpawnNextWave = false;
+
         destroyCounter = destroyTime;
     }
 
@@ -18,6 +20,8 @@ public class DestroyAfterEnd : MonoBehaviour
 
         if (destroyCounter <= 0)
         {
+            GameManager.Instance.canSpawnNextWave = true;
+            
             Destroy(gameObject);
         }
     }

@@ -128,20 +128,17 @@ public class PlanetController : MonoBehaviour
             animator.speed = 0.75f;
             animator.Play("Planet_" + variety.ToString(), -1, 0f);
         }
-        else
+        /*else
         {
-            /*
             animator.speed = -0.75f;
             animator.Play("Planet_" + variety.ToString(), 0, 1f);
             isReversed = true;
-            */
-        }
+        }*/
     }
 
     public void SettlePlanet()
     {
         /*StartCoroutine(ScaleUpAndStop());*/
-
 
         player.EnableSettleMode();
     }

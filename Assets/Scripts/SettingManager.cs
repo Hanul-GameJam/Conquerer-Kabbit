@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class SettingManager : MonoBehaviour
 {
+    private static readonly WaitForSeconds _waitForSeconds1 = new(1f);
+
     public AudioMixer audioMixer;
     private AudioSource audioSource;
     public Slider volumeSlider;
@@ -23,22 +25,18 @@ public class SettingManager : MonoBehaviour
     {
         audioSource = GameObject.Find("SceneAudio").GetComponent<AudioSource>();
 
-        // 🔹 볼륨 불러오기
         previousVolume = PlayerPrefs.GetFloat("Volume", 1f);
         audioMixer.SetFloat("MasterVolume", previousVolume);
         volumeSlider.value = previousVolume;
 
-        // 🔹 오디오 토글 불러오기 (기본값: true)
         bool isAudioOn = PlayerPrefs.GetInt("AudioOn", 1) == 1;
         audioToggle.isOn = isAudioOn;
         ApplyAudioState(isAudioOn);
 
-        // 🔹 전체화면 불러오기 (기본값: 현재 상태)
         bool isFullscreen = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0) == 1;
         Screen.fullScreen = isFullscreen;
         fullscreenToggle.isOn = isFullscreen;
 
-        // 🔹 해상도 불러오기
         InitializeResolutionOptions();
         int savedResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", currentResolutionIndex);
         resolutionDropdown.value = savedResolutionIndex;
@@ -47,7 +45,6 @@ public class SettingManager : MonoBehaviour
         Resolution resolution = resolutions[savedResolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, isFullscreen);
 
-        // 이벤트 등록
         volumeSlider.onValueChanged.AddListener(OnVolumeChange);
         audioToggle.onValueChanged.AddListener(OnAudioToggleChange);
         fullscreenToggle.onValueChanged.AddListener(ToggleFullscreen);
@@ -55,11 +52,6 @@ public class SettingManager : MonoBehaviour
         StartCoroutine(CheckFullscreen());
 
         UIManager.hasStarted = true;
-    }
-
-    void Update()
-    {
-        
     }
 
     private void OnVolumeChange(float volume)
@@ -134,7 +126,7 @@ public class SettingManager : MonoBehaviour
 
     private IEnumerator CheckFullscreen()
     {
-        yield return new WaitForSeconds(1f);
+        yield return _waitForSeconds1;
 
         fullscreenToggle.isOn = Screen.fullScreen;
     }

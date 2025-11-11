@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
                         PlanetController.Instance.Discovered();
                     });
 
-                    StartCoroutine(WaitForOther());
+                    StartCoroutine(WaitForPlanet());
                 }
 
                 countdown = waveInterval;
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("GameOverScene");
     }
 
-    private IEnumerator WaitForOther()
+    private IEnumerator WaitForPlanet()
     {
         yield return new WaitUntil(() => PlanetController.Instance.canProgress);
 

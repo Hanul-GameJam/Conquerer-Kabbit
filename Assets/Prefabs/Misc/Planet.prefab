@@ -123,10 +123,11 @@ MonoBehaviour:
   choiceShown: 0
   varieties: 12
   variety: 0
+  chance: 0
   baseSettleChance: 0
   additionalSettleChance: 0
   exploreFuelBonus: 50
-  exploreSettleBonus: 0.5
+  exploreSettleBonus: 50
   exploreScoreBonus: 100
   exploreWaveRateIncrease: 1
   settleSuccessBonusMultiplier: 2
@@ -139,3 +140,4 @@ MonoBehaviour:
   varietyChosen: 0
   scaleTarget: 0
   scaleSpeed: 0
+  canProgress: 0

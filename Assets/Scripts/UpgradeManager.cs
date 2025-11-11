@@ -143,9 +143,6 @@ public class UpgradeManager : MonoBehaviour
         SubtractMoney(GetCurrentFuelUpgrade().cost);
 
         PlayerPrefs.SetInt("FuelLevel", level + 1);
-
-        UIManager.Instance.ShowMoney();
-        UIManager.Instance.UpdateUpgradeUI();
     }
 
     public ConsumptionUpgrade GetCurrentConsumptionUpgrade()
@@ -165,9 +162,6 @@ public class UpgradeManager : MonoBehaviour
         SubtractMoney(GetCurrentConsumptionUpgrade().cost);
 
         PlayerPrefs.SetInt("ConsumptionLevel", level + 1);
-
-        UIManager.Instance.ShowMoney();
-        UIManager.Instance.UpdateUpgradeUI();
     }
 
     public SettleUpgrade GetCurrentSettleUpgrade()
@@ -188,8 +182,5 @@ public class UpgradeManager : MonoBehaviour
         SubtractMoney(GetCurrentSettleUpgrade().cost);
 
         PlayerPrefs.SetInt("SettleLevel", level + 1);
-
-        UIManager.Instance.ShowMoney();
-        UIManager.Instance.UpdateUpgradeUI();
     }
 }

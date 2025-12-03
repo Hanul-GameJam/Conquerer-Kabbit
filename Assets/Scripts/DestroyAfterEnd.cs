@@ -20,7 +20,7 @@ public class DestroyAfterEnd : MonoBehaviour
 
         if (destroyCounter <= 0)
         {
-            GameManager.Instance.canSpawnNextWave = true;
+            GameManager.Instance.EndWave();
             
             Destroy(gameObject);
         }

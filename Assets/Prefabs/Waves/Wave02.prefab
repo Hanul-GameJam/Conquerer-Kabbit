@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6e0603278b0ff49acb006e5ae264f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 10
+  destroyTime: 6.5
 --- !u!1001 &1360820283229669734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,6 +181,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3117538743158127909}
     m_Modifications:
+    - target: {fileID: -5309275396492343488, guid: 12f84653aaad07140ba82d9c18e684c7, type: 3}
+      propertyPath: damageAmount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 853049847304498615, guid: 12f84653aaad07140ba82d9c18e684c7, type: 3}
       propertyPath: m_Name
       value: Obstacle9 (3)

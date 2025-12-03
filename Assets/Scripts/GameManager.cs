@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         UIManager.Instance.UpdateScore(currentScore);
 
-        if (canSpawnNextWave)
+        /*if (canSpawnNextWave && canProgress)
         {
             countdown -= Time.deltaTime;
 
@@ -57,19 +58,33 @@ public class GameManager : MonoBehaviour
 
                 Instantiate(waves[waveIndex], waveSpawnpoint.position, waveSpawnpoint.rotation);
 
-                totalWaveCount++;
+                ToggleWaveSpawning(false);
 
-                if (totalWaveCount % waveRate == 0)
+                if (totalWaveCount != 0 && totalWaveCount % waveRate == 0)
                 {
-                    ToggleWaveSpawning(false);
+                    canProgress = false;
 
-                    Delay(5f, () =>
+                    if (canSpawnNextWave == true)
                     {
+                        canSpawnNextWave = false;
+                        
                         PlanetController.Instance.Discovered();
-                    });
 
-                    StartCoroutine(WaitForPlanet());
+                        StartCoroutine(WaitForPlanet());
+                    }
                 }
+
+                countdown = waveInterval;
+            }
+        }*/
+
+        if (canSpawnNextWave)
+        {
+            countdown -= Time.deltaTime;
+
+            if (countdown <= 0)
+            {
+                StartWave();
 
                 countdown = waveInterval;
             }
@@ -95,6 +110,50 @@ public class GameManager : MonoBehaviour
         canSpawnNextWave = status;
     }
 
+    private void StartWave()
+    {
+        waveIndex = UnityEngine.Random.Range(0, waves.Length);
+
+        Instantiate(waves[waveIndex], waveSpawnpoint.position, waveSpawnpoint.rotation);
+
+        ToggleWaveSpawning(false);
+    }
+
+    public void EndWave()
+    {
+        totalWaveCount++;
+
+        CheckPlanetCondition();
+    }
+
+    private void CheckPlanetCondition()
+    {
+        if (totalWaveCount == 0)
+        {
+            ToggleWaveSpawning(true);
+
+            return;
+        }
+
+        if (totalWaveCount % waveRate == 0)
+        {
+            LoadPlanet();
+        }
+        else
+        {
+            ToggleWaveSpawning(true);
+        }
+    }
+
+    private void LoadPlanet()
+    {
+        ToggleWaveSpawning(false);
+
+        PlanetController.Instance.Discovered();
+
+        StartCoroutine(WaitForPlanet());
+    }
+
     public void GameOver()
     {
         PlayerPrefs.SetInt("LastScore", currentScore);
@@ -104,21 +163,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator WaitForPlanet()
     {
-        yield return new WaitUntil(() => PlanetController.Instance.canProgress);
+        yield return new WaitUntil(() => PlanetController.Instance.canProgress == true);
 
         totalWaveCount = 0;
         countdown = waveInterval;
-        ToggleWaveSpawning(true);
-    }
-
-    public void Delay(float delay, Action afterDelay)
-    {
-        StartCoroutine(DelayCoroutine(delay, afterDelay));
-    }
-
-    private IEnumerator DelayCoroutine(float delay, Action afterDelay)
-    {
-        yield return new WaitForSeconds(delay);
-        afterDelay?.Invoke();
     }
 }

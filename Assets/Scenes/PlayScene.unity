@@ -192,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 961689525}
     - target: {fileID: 8690147637006481563, guid: 4a5975bb940166a4aa372c8d1c91894d, type: 3}
       propertyPath: exploreSettleBonus
-      value: 50
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8709861918122522536, guid: 4a5975bb940166a4aa372c8d1c91894d, type: 3}
       propertyPath: m_Name
@@ -1628,7 +1628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.001159668, y: -0.006515503}
+  m_AnchoredPosition: {x: 0.001159668, y: -0.0065307617}
   m_SizeDelta: {x: -799.14, y: -403.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &961689524
@@ -1656,7 +1656,7 @@ Transform:
   m_GameObject: {fileID: 961689524}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12, y: 0, z: -2}
+  m_LocalPosition: {x: 12, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3565,7 +3565,7 @@ MonoBehaviour:
   - {fileID: 7774590118588684456, guid: e8b5826c8a7196c43bded260a84e1419, type: 3}
   totalWaveCount: 0
   waveRate: 2
-  waveInterval: 1
+  waveInterval: 3
   canSpawnNextWave: 1
   waveIndex: 0
   planetPrefab: {fileID: 8709861918122522536, guid: 4a5975bb940166a4aa372c8d1c91894d, type: 3}

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6e0603278b0ff49acb006e5ae264f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 10
+  destroyTime: 5
 --- !u!1001 &100523163388235309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,6 +54,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2315744590092870366}
     m_Modifications:
+    - target: {fileID: 4832745830316758346, guid: d1dfaaecf96d6a74eb8794cccc731b75, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832745830316758346, guid: d1dfaaecf96d6a74eb8794cccc731b75, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7503362428214369695, guid: d1dfaaecf96d6a74eb8794cccc731b75, type: 3}
       propertyPath: m_Name
       value: Obstacle10
@@ -96,6 +104,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8271141143029857738, guid: d1dfaaecf96d6a74eb8794cccc731b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631228454604514767, guid: d1dfaaecf96d6a74eb8794cccc731b75, type: 3}
+      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

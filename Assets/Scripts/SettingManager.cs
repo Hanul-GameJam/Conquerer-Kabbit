@@ -25,6 +25,11 @@ public class SettingManager : MonoBehaviour
     {
         audioSource = GameObject.Find("SceneAudio").GetComponent<AudioSource>();
 
+        volumeSlider.onValueChanged.RemoveAllListeners();
+        audioToggle.onValueChanged.RemoveAllListeners();
+        fullscreenToggle.onValueChanged.RemoveAllListeners();
+        resolutionDropdown.onValueChanged.RemoveAllListeners();
+
         previousVolume = PlayerPrefs.GetFloat("Volume", 1f);
         audioMixer.SetFloat("MasterVolume", previousVolume);
         volumeSlider.value = previousVolume;
@@ -33,7 +38,7 @@ public class SettingManager : MonoBehaviour
         audioToggle.isOn = isAudioOn;
         ApplyAudioState(isAudioOn);
 
-        bool isFullscreen = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0) == 1;
+        bool isFullscreen = PlayerPrefs.GetInt("Fullscreen", 1) == 1;
         Screen.fullScreen = isFullscreen;
         fullscreenToggle.isOn = isFullscreen;
 
@@ -42,12 +47,10 @@ public class SettingManager : MonoBehaviour
         resolutionDropdown.value = savedResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
-        Resolution resolution = resolutions[savedResolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, isFullscreen);
-
         volumeSlider.onValueChanged.AddListener(OnVolumeChange);
         audioToggle.onValueChanged.AddListener(OnAudioToggleChange);
         fullscreenToggle.onValueChanged.AddListener(ToggleFullscreen);
+        resolutionDropdown.onValueChanged.AddListener(delegate { ApplyResolution(); });
 
         StartCoroutine(CheckFullscreen());
 

@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6e0603278b0ff49acb006e5ae264f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 10
+  destroyTime: 4
 --- !u!1001 &9691770076393877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,6 +113,14 @@ PrefabInstance:
     - target: {fileID: 1859817993688137856, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
@@ -184,6 +192,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
       value: Obstacle12 (8)
@@ -253,6 +269,14 @@ PrefabInstance:
     - target: {fileID: 1859817993688137856, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
@@ -324,6 +348,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
       value: Obstacle12 (5)
@@ -393,6 +425,14 @@ PrefabInstance:
     - target: {fileID: 1859817993688137856, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
@@ -464,6 +504,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
       value: Obstacle12 (7)
@@ -533,6 +581,14 @@ PrefabInstance:
     - target: {fileID: 1859817993688137856, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
@@ -604,6 +660,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
       value: Obstacle12 (11)
@@ -674,6 +738,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
       value: Obstacle12
@@ -696,6 +768,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4809129590961399763}
     m_Modifications:
+    - target: {fileID: 105052783604739249, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: damageAmount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1859817993688137856, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.5
@@ -743,6 +819,14 @@ PrefabInstance:
     - target: {fileID: 1859817993688137856, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
@@ -814,6 +898,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
       value: Obstacle12 (1)
@@ -884,6 +976,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name
       value: Obstacle12 (10)
@@ -953,6 +1053,14 @@ PrefabInstance:
     - target: {fileID: 1859817993688137856, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389335034139211368, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818263838132432103, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6377648609821280871, guid: 5bbe23f39ad309843a5fbef8db2ffcd3, type: 3}
       propertyPath: m_Name

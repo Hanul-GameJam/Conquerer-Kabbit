@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 {
     private static readonly WaitForSeconds _waitForSeconds0_5 = new(0.5f);
     private static readonly WaitForSeconds _waitForSeconds1 = new(1f);
-    private static readonly WaitForSeconds _waitForSeconds3 = new(3f);
+    private static readonly WaitForSeconds _waitForSeconds1_5 = new(1.5f);
 
     public static UIManager Instance;
 
@@ -391,21 +391,21 @@ public class UIManager : MonoBehaviour
             settleResultText.text = "!정착 실패!";
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return _waitForSeconds1;
 
         gainedMoneyText.gameObject.SetActive(true);
         gainedMoneyText.text = "얻은 자원: " + gainedMoney.ToString();
         UpgradeManager.Instance.AddMoney(gainedMoney);
 
-        yield return new WaitForSeconds(1f);
-
         if (gainedMoney > PlayerPrefs.GetInt("BestScore"))
         {
+            yield return _waitForSeconds1;
+
             PlayerPrefs.SetInt("BestScore", gainedMoney);
             bestScoreText.gameObject.SetActive(true);
         }
 
-        yield return _waitForSeconds3;
+        yield return _waitForSeconds1_5;
 
         exitButton.SetActive(true);
     }
@@ -414,7 +414,7 @@ public class UIManager : MonoBehaviour
     {
         gameOverMenu.SetActive(true);
 
-        yield return new WaitForSeconds(1f);
+        yield return _waitForSeconds1;
 
         ShowLostResource();
         scoreText.gameObject.SetActive(true);

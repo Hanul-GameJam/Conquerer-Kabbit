@@ -110,6 +110,9 @@ public class PlanetController : MonoBehaviour
         animator.enabled = false;
         canMove = false;
         canProgress = false;
+
+        GameManager.Instance.totalWaveCount = 0;
+        GameManager.Instance.ToggleWaveSpawning(true);
     }
 
     public void Discovered()
@@ -154,8 +157,6 @@ public class PlanetController : MonoBehaviour
         {
             if (roll < chance)
             {
-                Debug.Log("Settle Success!");
-
                 Delay(2f, () =>
                 {
                     totalGainedMoney = (int)Mathf.Round(
@@ -167,8 +168,6 @@ public class PlanetController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Settle Failed!");
-
                 player.TriggerExplosion();
 
                 Delay(1f, () =>
@@ -190,6 +189,7 @@ public class PlanetController : MonoBehaviour
         player.ToggleControl(true);
         canMove = true;
         canProgress = true;
+        GameManager.Instance.ToggleWaveSpawning(true);
 
         player.RefillFuel(exploreFuelBonus);
         additionalSettleChance += exploreSettleBonus;

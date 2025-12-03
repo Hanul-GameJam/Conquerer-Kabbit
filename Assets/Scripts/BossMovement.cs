@@ -2,25 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class BossMovement : MonoBehaviour
-{
-    private Rigidbody2D rb;
+{    
     public float moveSpeed;
     public bool phase0, phase1, phase2, phase3, phase4, phase5, phase6;
     public float initialXThreshold, laterXThreshold, laterMovementSpeed, randomRange;
     public bool YSetting;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
     void Update()
     {
+        float lastMove = 0;
+
         if (phase0)
         {
             transform.Translate(new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
+            lastMove = -moveSpeed;
 
             if (transform.position.x < initialXThreshold)
             {
@@ -31,6 +27,7 @@ public class BossMovement : MonoBehaviour
         else if (phase1)
         {
             transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
+            lastMove = moveSpeed;
 
             if (transform.position.x > laterXThreshold)
             {
@@ -45,6 +42,7 @@ public class BossMovement : MonoBehaviour
             if (YSetting)
             {
                 transform.Translate(new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
+                lastMove = -moveSpeed;
 
                 if (transform.position.x < -laterXThreshold)
                 {
@@ -71,6 +69,7 @@ public class BossMovement : MonoBehaviour
             if (YSetting)
             {
                 transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
+                lastMove = moveSpeed;
 
                 if (transform.position.x > laterXThreshold)
                 {
@@ -96,6 +95,7 @@ public class BossMovement : MonoBehaviour
             if (YSetting)
             {
                 transform.Translate(new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
+                lastMove = -moveSpeed;
 
                 if (transform.position.x < -laterXThreshold)
                 {
@@ -122,6 +122,7 @@ public class BossMovement : MonoBehaviour
             if (YSetting)
             {
                 transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
+                lastMove = moveSpeed;
 
                 if (transform.position.x > laterXThreshold)
                 {
@@ -148,6 +149,7 @@ public class BossMovement : MonoBehaviour
             if (YSetting)
             {
                 transform.Translate(new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
+                lastMove = -moveSpeed;
 
                 if (transform.position.x < -laterXThreshold)
                 {
@@ -165,6 +167,15 @@ public class BossMovement : MonoBehaviour
 
                 YSetting = true;
             }
+        }
+
+        if (lastMove > 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (lastMove < 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }

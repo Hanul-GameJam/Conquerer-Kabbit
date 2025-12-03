@@ -5,12 +5,12 @@ using UnityEngine;
 public class TitleMovement : MonoBehaviour
 {
     public GameObject upperTitle, lowerTitle;
+    public Transform upperTitleTarget, lowerTitleTarget;
     public float upperTitleMoveSpeed, lowerTitleMoveSpeed;
-    public float upperTitleX, lowerTitleX;
 
     void Update()
     {
-        if (upperTitle.transform.position.x < upperTitleX)
+        if (upperTitle.transform.position.x < upperTitleTarget.position.x)
         {
             upperTitle.transform.position = new Vector3(
                 upperTitle.transform.position.x + upperTitleMoveSpeed * Time.deltaTime,
@@ -19,7 +19,7 @@ public class TitleMovement : MonoBehaviour
             );
         }
 
-        if (lowerTitle.transform.position.x > lowerTitleX)
+        if (lowerTitle.transform.position.x > lowerTitleTarget.position.x)
         {
             lowerTitle.transform.position = new Vector3(
                 lowerTitle.transform.position.x - lowerTitleMoveSpeed * Time.deltaTime,
